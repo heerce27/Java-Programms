@@ -1,6 +1,5 @@
 import java.util.Scanner;
 public class VendinM {
-
     enum Coin{
     ONE,TWO,FIVE,TEN
 }
