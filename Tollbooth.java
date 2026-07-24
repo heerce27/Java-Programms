@@ -4,7 +4,6 @@ public class Tollbooth {
     {
         double total=0;
         int c=0,b=0,t=0;
-        int v=0;
         String vehicleType;
         Scanner sc=new Scanner(System.in);
         do{
@@ -13,23 +12,26 @@ public class Tollbooth {
 
             switch(vehicleType.toLowerCase())
             {
-                case "car":
+                case "car"-> {
                     total+=50.00;
                     c++;
-                    break;
-                case "bike":
+                }
+                case "bike"-> { 
                     total+=20.00;
                     b++;
-                    break;
-                case "truck":
+                    
+                }
+                case "truck"-> {
                     total+=150.00;
                     t++;
-                    break;
-                case "done":
+                    
+                }
+                case "done"-> {
                     System.out.println("Exiting...");
-                    break;
-                default:
+                }
+                default-> {
                     System.out.println("Invalid vehicle type!");
+                }
             }
         }while(!vehicleType.equals("done"));
         if (c >= b && c >= t)
