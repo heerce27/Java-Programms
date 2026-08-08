@@ -9,8 +9,8 @@ public static void main(String[] args)
     int total=0;
     Scanner sc= new Scanner(System.in);
     System.out.print("Snack price :"+PRICE);
-    System.out.print("\nInsert coins(ONR,TWO,FIVE,TEN):");
-    while(total<PRICE)
+    System.out.print("\nInsert coins(ONR,TWO,FIVE,TEN) ");
+    while(total<=PRICE)
     {
         System.out.print("Coin:");
         String input = sc.next().toUpperCase();
@@ -38,7 +38,6 @@ public static void main(String[] args)
                 System.out.print("Nothing");
                 break;
         } System.out.println("Total inserted = " + total);
-        
         }
         System.out.println("Snack dispensed!");
         if (total > PRICE) {

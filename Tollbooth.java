@@ -19,12 +19,10 @@ public class Tollbooth {
                 case "bike"-> { 
                     total+=20.00;
                     b++;
-                    
                 }
                 case "truck"-> {
                     total+=150.00;
                     t++;
-                    
                 }
                 case "done"-> {
                     System.out.println("Exiting...");
