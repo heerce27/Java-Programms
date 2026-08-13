@@ -1,0 +1,10 @@
+# Java compiled files
+*.class
+
+# Java build/output directories
+out/
+bin/
+target/
+
+# VS Code
+.vscode/
