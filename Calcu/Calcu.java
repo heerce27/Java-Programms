@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class Calc {
+public class Calcu {
     public static void main(String args[])
     {
         int op=0;

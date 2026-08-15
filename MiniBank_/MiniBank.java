@@ -1,4 +1,7 @@
+import java.util.Objects;
 import java.util.Scanner;
+
+//Mini bank class 
 public class MiniBank {
     private double balance;
     enum MenuOption
@@ -8,20 +11,28 @@ public class MiniBank {
     public record BankInfo(String name, String branch) {
 }
 
-static class Customer
+
+//Customer class
+static class Customer implements Cloneable
 {
     private String name,email,mobile;
     private final String customerId= generateCustomerId();
     private static long customerCounter =100;
+    private Address address;
     private static String generateCustomerId(){
         customerCounter++;
         return "CUST" + String.format("%05d", customerCounter);
     }
-    Customer(String name,String email,String mobile)
+    Customer(String name,String email,String mobile,Address address)
     {
         this.name=name;
         this.email=email;
         this.mobile=mobile;
+        this.address=address;
+    }
+    
+    public Address getAddress() {
+    return address;
     }
     String getCustomerId()
     {
@@ -38,6 +49,39 @@ static class Customer
     String getMobile()
     {
         return mobile;
+    }
+    @Override
+    public Customer clone() {
+    try {
+        return (Customer) super.clone();
+    } catch (CloneNotSupportedException e) {
+        throw new AssertionError();
+    }
+    } 
+
+    //Address class
+    public static class Address {
+    private String line;
+    private String city;
+    private String pincode;
+
+    public Address(String line, String city, String pincode) {
+        this.line = line;
+        this.city = city;
+        this.pincode = pincode;
+    }
+
+    public String getLine() {
+        return line;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getPincode() {
+        return pincode;
+    }
     }
     
 }
@@ -63,6 +107,24 @@ static class Account
     {
         this(ownerName,0);
     }
+
+    public String toString(){
+         return "\nAccount Number: " + accountNumber  + " \nOwner Name:  "  + ownerName + "\nBalance: "+balance;
+    }
+    public boolean equals(Object o){
+        if(this==o){
+            return true;
+        }
+        if(!(o instanceof Account)){
+            return false;
+        }
+        Account c= (Account)o;
+       return this.accountNumber.equals(c.accountNumber);
+    }
+    public int hashCode(){
+        return Objects.hash(accountNumber);
+    }
+
     void deposit(long amt)
     {
     if(amt>0)
@@ -153,13 +215,22 @@ public static void main(String args[]){
         accounts[2].withdraw(100);
 
         // Print balances
-        for (Account account : accounts) {
-
-            System.out.println(
-                account.getAccountNumber() +
-                " | Owner: " + account.getOwnerName() +
-                " | Balance: " + account.getBalance()
-            );
+        System.out.println("\nAccount Details:");
+for (Account account : accounts) {
+    System.out.println(account.toString());
 }
+System.out.println("\nEquals Test:");
+Account a1 = new Account("Test", 1000);
+Account a2 = new Account("Test", 1000);
+
+System.out.println("a1 equals a2: " + a1.equals(a2));
+
+System.out.println("\ninstanceof Test:");
+Object obj = accounts[0];
+
+if (obj instanceof Account) {
+    System.out.println("obj is an Account");
+}
+scanner.close();
 }
 }
