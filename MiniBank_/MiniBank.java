@@ -231,6 +231,49 @@ Object obj = accounts[0];
 if (obj instanceof Account) {
     System.out.println("obj is an Account");
 }
+
+System.out.println("\nValidator Tests:");
+
+System.out.println("Mobile valid: "
+        + Validator.isValidMobile("9876543210"));
+
+System.out.println("Mobile invalid: "
+        + Validator.isValidMobile("1234567890"));
+
+System.out.println("Email valid: "
+        + Validator.isValidEmail("heer@gmail.com"));
+
+System.out.println("Email invalid: "
+        + Validator.isValidEmail("heer@gmail"));
+
+System.out.println("PAN valid: "
+        + Validator.isValidPan("ABCDE1234F"));
+
+System.out.println("PAN invalid: "
+        + Validator.isValidPan("ABC12345"));
+
+System.out.println("IFSC valid: "
+        + Validator.isValidIfsc("SBIN0001234"));
+
+System.out.println("IFSC invalid: "
+        + Validator.isValidIfsc("SBI1234"));
+
+
+System.out.println("\nCommand Parser Test:");
+
+Command command =
+        CommandParser.parse("DEPOSIT AC0001 500");
+
+System.out.println("Type: " + command.type());
+System.out.println("Account Number: " + command.accountNumber());
+System.out.println("Amount: " + command.amount());
+
+
+System.out.println("\nStatement:");
+
+System.out.println(
+        StatementFormatter.buildStatement(accounts[0])
+);
 scanner.close();
 }
 }
