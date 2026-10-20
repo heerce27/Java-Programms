@@ -1,4 +1,3 @@
-
 class SeatBooking {
     int seatsLeft = 5;
     int successfulBookings = 0;
